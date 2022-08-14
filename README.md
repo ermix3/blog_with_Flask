@@ -8,19 +8,19 @@
 ## Screenshots
 
 * All posts
-![](screens/posts.png)
+![posts](screens/posts.png)
 * Details of post
-![](screens/Details.png)
+![post](screens/details.png)
 * Edit post
-![](screens/Edit.png)
+![edit](screens/edit.png)
 * Contact
-![](screens/contact.png)
+![contact](screens/contact.png)
 * About
-![](screens/about.png)
+![about](screens/about.png)
 * Register
-![](screens/register.png)
+![register](screens/register.png)
 * Login
-![](screens/login.png)
+![login](screens/login.png)
 
 ## Build With:
 
