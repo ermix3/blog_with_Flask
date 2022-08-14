@@ -34,7 +34,7 @@
 
 - [x] Create a web app that allows users to create a blog post.
 - [x] The user should be able to see all the posts that have been created.
-- [x] The user should be able to see a single post when they click on the title of the post.
+- [x] The user should be able to see a single post when they click on the link `Read More` of the post.
 - [x] The user should be able to edit a post.
 - [x] The user should be able to delete a post.
 
