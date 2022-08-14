@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}{{ post['title'] }}{% endblock %}
+
+{% block content %}
+<div class="py-16 bg-yellow-300">
+    <div class="w-3/6 mx-auto flex justify-end items-center">
+        <a class="rounded-full my-2 py-1 px-2 uppercase text-xs font-bold tracking-wider cursor-pointer text-white bg-gray-600 hover:bg-gray-500"
+           href="{{ url_for('blog.index') }}">Back</a>
+        <a class="rounded-full m-2 py-1 px-2 uppercase text-xs font-bold tracking-wider cursor-pointer text-white hover:bg-orange-600 bg-orange-500  shadow-xl"
+           href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+        <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+            <input class="rounded-full my-2 py-1 px-2 uppercase text-xs font-bold tracking-wider cursor-pointer text-white hover:bg-red-700 bg-red-600"
+                   type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+        </form>
+    </div>
+    <div class="flex flex-col justify-center items-center mx-auto w-3/6 bg-yellow-300 shadow p-5">
+        <div class="mb-5">
+            <h1 class="text-xl font-bold">{{ post['title'] }}</h1>
+            <p class="about text-sm mt-2">On <span class="p-1 bg-yellow-500 rounded-full shadow text-white">{{ post['created'].strftime('%Y-%m-%d') }}</span>
+            </p>
+            <p class="body mt-5">{{ post['body'] }}</p>
+        </div>
+        <div class="author border-t-2 border-yellow-400 mb-5">
+            <p class="text-lg">by {{ post['username'] }}</p>
+            <p class="pl-4">Lorem ipsum doloremque illo libero. Ad culpa dicta eaque expedita iste minus
+                perspiciatis,
+                possimus
+                praesentium, provident quo recusandae voluptatibus! Esse modi, placeat!</p>
+        </div>
+        <div class="author border-t-2 border-yellow-400">
+            <p class="text-lg">0 Comment</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

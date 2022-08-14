@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}New Post{% endblock %}
+
+{% block content %}
+<div class="flex flex-col justify-center items-center py-16 bg-yellow-300">
+  <h1 class="text-5xl font-bold my-16">New Post</h1>
+  <form method="post">
+    <label for="title" class="form-label inline-block mb-2 text-gray-700">Title</label>
+    <input name="title" id="title" value="{{ request.form['title'] }}"
+            class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none bg-yellow-100" required>
+    <label for="body" class="form-label inline-block mb-2 text-gray-700">Body</label>
+    <textarea name="body" id="body" rows="9" class="form-control
+        block
+        w-96
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none bg-yellow-100">{{ request.form['body'] }}</textarea>
+    <input type="submit" class="rounded-full my-2 py-1 px-2 uppercase text-xs font-bold tracking-wider cursor-pointer text-white bg-green-600 hover:bg-green-500" value="Create">
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+<div class="p-16 bg-yellow-300">
+    <h1 class="text-5xl mb-5">All Posts</h1>
+    {% if g.user %}
+    <div class="flex justify-end items-end"><a
+            class="rounded-full py-2 px-3 uppercase text-xs font-bold tracking-wider cursor-pointer text-white bg-yellow-500 mr-10 shadow-xl"
+            href="{{ url_for('blog.create') }}">New</a></div>
+    {% endif %}
+    <div class="flex flex-wrap justify-evenly items-start">
+        {% for post in posts %}
+        <article class="rounded bg-white border-gray-400 shadow-md m-3 w-64 h-72">
+            <header>
+                <div>
+                    <h1 class="text-2xl bg-yellow-100 p-2 mb-2">{{ post['title'] }}</h1>
+                    <div class="about text-xs mb-3 ml-2">by <b>{{ post['username'] }}</b> on <span
+                            class="px-2 bg-gray-200 text-secondary-200 text-xs uppercase font-bold rounded-full">{{ post['created'].strftime('%Y-%m-%d') }}</span>
+                    </div>
+                </div>
+                {% if g.user['id'] == post['author_id'] %}
+                <div class="flex ml-2">
+                    <a class="rounded-full my-2 py-1 px-2 uppercase text-xs font-bold tracking-wider cursor-pointer text-white hover:bg-orange-600 bg-orange-500  shadow-xl"
+                       href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+                    <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+                        <input class="rounded-full my-2 ml-2 py-1 px-2 uppercase text-xs font-bold tracking-wider cursor-pointer text-white hover:bg-red-700 bg-red-600"
+                               type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+                    </form>
+                </div>
+                {% endif %}
+            </header>
+            <p class="text-lg mt-4 p-2">{{ post['body'][:60] }}...<a href="{{ url_for('blog.show', id=post['id']) }}"
+                                                                     class="action underline text-yellow-400">Read
+                More</a></p>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+<nav class="flex justify-between items-end mx-6">
+    <h1>
+        <a href="{{ url_for('index') }}" class="text-9xl">
+            <!--            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="h-12">-->
+            Blog
+        </a>
+        <p class="text-sm">Welcome To My Blog!</p>
+    </h1>
+    <ul class="flex">
+        {% if g.user %}
+        <li class="mx-2 hover:bg-black hover:text-white hover:rounded p-2">
+            <span><i class="fa-solid fa-user fa-xl mr-1 pb-3 "></i>{{ g.user['username'] }}</span>
+        </li>
+        <li class="mx-2 hover:bg-black hover:text-white hover:rounded p-2">
+            <a href="{{ url_for('auth.logout') }}">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-xl mr-1 "></i>Log-Out
+            </a>
+        </li>
+        {% else %}
+        <li class="mx-2 hover:bg-black hover:text-white hover:rounded p-2">
+            <a href="{{ url_for('auth.register') }}">
+                <i class="fa-solid fa-cash-register fa-xl mr-1"></i>Register
+            </a>
+        </li>
+        <li class="mx-2 hover:bg-black hover:text-white hover:rounded p-2">
+            <a href="{{ url_for('auth.login') }}">
+                <i class="fa-solid fa-arrow-right-to-bracket fa-xl mr-1"></i>Log-In
+            </a>
+        </li>
+        {% endif %}
+        <li class="mx-2 hover:bg-black hover:text-white hover:rounded p-2">
+            <a href="{{ url_for('about') }}">
+                <i class="fa-solid fa-newspaper fa-xl mr-1"></i>About
+            </a>
+        </li>
+        <li class="mx-2 hover:bg-black hover:text-white hover:rounded p-2">
+            <a href="{{ url_for('contact') }}">
+                <i class="fa-solid fa-id-card fa-xl mr-1"></i>Contact
+            </a>
+        </li>
+    </ul>
+</nav>
