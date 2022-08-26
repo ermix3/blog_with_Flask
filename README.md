@@ -57,7 +57,7 @@ pip install -r requirements.txt
 * To Run Initial database:
 
 ```bash
-$ flask --app flaskr init-db
+$ flask --app my_blog init-db
 Initialized the database.
 ```
 
